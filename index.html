@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>CinePédia</title>
+    <style>
+        .footer {
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        .footer-links a {
+            font-size: 1.1rem; /* Fonte um pouco maior */
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>CinePédia</h1>
+        <div>
+            <input type="text" id="campo-busca" placeholder="Digite o nome de um filme...">
+            <button id="botao-busca" onclick="iniciarBusca()" aria-label="Buscar">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </button>
+            <button id="add-movie-button" aria-label="Adicionar Filme">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </button>
+            <button id="theme-toggle">🌙</button>
+        </div>
+    </header>
+    <main>
+        <section class="card-container">
+            <!-- <article class="card">
+                <h2>JavaScript</h2>
+                <p>1995</p>
+                <p>JavaScript é uma linguagem de programação</p>
+                <a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript" target="_blank">Saiba mais</a>
+            </article>
+            <article class="card">
+                <h2>Python</h2>
+                <p>1991</p>
+                <p>Python é uma linguagem de programação</p>
+                <a href="https://docs.python.org/pt-br/3.14/" target="_blank">Saiba mais</a>
+            </article> -->
+        </section>
+    </main>
+
+    <dialog id="add-movie-dialog">
+        <form id="add-movie-form">
+            <h2>Adicionar Novo Filme</h2>
+            <label for="movie-name">Nome:</label>
+            <input type="text" id="movie-name" required>
+            <label for="movie-year">Ano:</label>
+            <input type="number" id="movie-year" required>
+            <label for="movie-description">Descrição:</label>
+            <textarea id="movie-description" rows="4" required></textarea>
+            <label for="movie-link">Link (IMDb):</label>
+            <input type="url" id="movie-link" required>
+            <button type="submit">Salvar</button>
+            <button type="button" id="cancel-button">Cancelar</button>
+        </form>
+    </dialog>
+
+    <footer class="footer">
+        <ul class="footer-links">
+            <li>
+                <a href="https://github.com/" target="_blank" aria-label="Link para o Github">
+                Github    
+                </a>
+            </li>
+            <li>
+                <a href="https://www.linkedin.com/" target="_blank" aria-label="Link para o Linkedin">
+                Linkedin
+                </a>
+            </li>
+        </ul>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

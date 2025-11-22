@@ -1,0 +1,367 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:wght@300;400;700&display=swap');
+
+* {
+    box-sizing: border-box; /* Garante que padding e border não aumentem o tamanho total do elemento */
+}
+
+:root {
+    --primary-color: #E5B82B;   /* Dourado cinematográfico */
+    --secondary-color: #E5E5E5; /* Branco suave para texto */
+    --tertiary-color: #8C8C8C;  /* Cinza para detalhes e placeholders */
+    --bg-color: #141414;        /* Preto (estilo streaming) */
+    --bg-light: #2F2F2F;      /* Cinza escuro para hover e detalhes */
+}
+
+body.light-mode {
+    --primary-color: #B8860B;   /* Tom de dourado mais escuro para o modo claro */
+    --secondary-color: #141414; /* Preto (cor de fundo do tema escuro) para o texto */
+    --tertiary-color: #8C8C8C;  /* Cinza (mantido do tema escuro) */
+    --bg-color: #E5E5E5;        /* Branco suave (cor do texto do tema escuro) para o fundo */
+    --bg-light: #FFFFFF;      /* Branco puro para os cards, para se destacar do fundo */
+}
+
+
+body {
+    margin: 0; /* Remove a margem padrão do body */
+    display: flex; /* Habilita o layout flexbox */
+    flex-direction: column; /* Organiza os itens em coluna */
+    min-height: 100vh; /* Garante que o body ocupe pelo menos a altura total da tela */
+    background: var(--bg-color); /* Define a cor de fundo usando uma variável */
+    color: var(--secondary-color); /* Define a cor do texto padrão usando uma variável */
+    font-family: "Lato", sans-serif; /* Define a família da fonte para o corpo */
+}
+
+header {
+    padding: 2rem 1rem; /* Espaçamento interno (2rem em cima/baixo, 1rem nos lados) */
+    display: flex; /* Habilita o layout flexbox */
+    align-items: center; /* Alinha os itens verticalmente ao centro */
+    justify-content: center; /* Centraliza os itens no cabeçalho */
+    position: sticky; /* Mantém o cabeçalho fixo no topo ao rolar a página */
+    top: 0; /* Posição do topo quando sticky */
+    background: var(--bg-color); /* Cor de fundo do cabeçalho */
+    z-index: 10; /* Define a ordem de empilhamento para ficar sobre outros elementos */
+    border-bottom: 1px solid var(--bg-light); /* Adiciona uma borda inferior */
+    gap: 1rem; /* Espaçamento entre os elementos flex */
+}
+
+header h1 {
+    font-family: 'Bebas Neue', sans-serif; /* Fonte de destaque para o título */
+    font-size: 3.5rem; /* Tamanho da fonte */
+    margin: 0; /* Remove a margem padrão */
+    font-weight: 400; /* Peso da fonte */
+    white-space: nowrap; /* Impede a quebra de linha do texto */
+    color: var(--primary-color); /* Cor dourada para destaque */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra para dar profundidade */
+}
+
+header div {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
+    align-items: center; /* Alinha todos os itens verticalmente ao centro */
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 40rem; /* Largura máxima para o container da busca */
+}
+
+#campo-busca {
+    padding: 0.375rem 0.75rem; /* Espaçamento interno */
+    height: 44px; /* Altura fixa para alinhar com os botões */
+    border-radius: 1rem; /* Arredonda as bordas */
+    border: 1px solid var(--tertiary-color); /* Define a borda */
+    background: var(--bg-color); /* Cor de fundo */
+    font-family: inherit; /* Herda a família da fonte do elemento pai */
+    font-size: 1.2rem; /* Tamanho da fonte */
+    transition: all 0.2s ease; /* Adiciona uma transição suave para todas as propriedades */
+    flex-grow: 1; /* Permite que o input cresça para ocupar o espaço disponível */
+    color: var(--secondary-color); /* Cor do texto digitado */
+}
+
+input::placeholder {
+    font-size: 1rem; /* Tamanho da fonte do placeholder */
+    font-weight: 300; /* Peso da fonte do placeholder */
+    color: var(--tertiary-color); /* Cor do texto do placeholder */
+}
+
+input:focus {
+    outline: none; /* Remove a borda de foco padrão */
+    border-color: var(--primary-color); /* Muda a cor da borda ao focar */
+    box-shadow: 0 0 0 0.1rem var(--tertiary-color); /* Adiciona uma sombra de caixa para indicar foco */
+}
+
+#botao-busca {
+    height: 44px; /* Altura fixa */
+    width: 44px; /* Largura fixa */
+    padding: 0; /* Remove o padding para centralizar o ícone */
+    border-radius: 50%; /* Deixa o botão redondo */
+    border: none; /* Remove a borda padrão */
+    cursor: pointer; /* Muda o cursor para uma mão ao passar por cima */
+    transition: background-color 0.2s ease, color 0.2s ease; /* Transição suave para cor de fundo e cor do texto */
+    background-color: var(--primary-color); /* Cor de fundo */
+    color: var(--bg-color); /* Cor do texto */
+    border: 1px solid var(--primary-color); /* Adiciona uma borda */
+    display: flex; /* Habilita flexbox para centralizar o ícone */
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */
+}
+
+#add-movie-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px; /* Largura fixa */
+    height: 44px; /* Altura fixa */
+    border-radius: 50%;
+    border: 1px solid var(--tertiary-color);
+    background-color: var(--bg-light);
+    color: var(--secondary-color);
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#add-movie-button svg {
+    stroke: currentColor; /* O ícone herda a cor do botão */
+}
+
+#botao-busca:hover {
+    background-color: var(--bg-light); /* Muda a cor de fundo ao passar o mouse */
+    color: var(--primary-color); /* Muda a cor do texto ao passar o mouse */
+    box-shadow: 0 0 0 0.1rem var(--primary-color); /* Adiciona uma sombra de caixa */
+}
+
+#botao-busca:active {
+    transform: scale(0.98); /* Efeito de clique (diminui o tamanho) */
+}
+
+#add-movie-button:hover, #add-movie-button:active {
+    border-color: var(--primary-color);
+    transform: scale(0.98); /* Efeito de clique (diminui o tamanho) */
+}
+
+#theme-toggle {
+    padding: 0.8rem;
+    font-size: 1.2rem;
+    line-height: 1;
+    border-radius: 50%;
+    background-color: var(--bg-color);
+    color: var(--secondary-color);
+    cursor: pointer;
+    margin-left: 0.5rem; /* Adiciona um espaçamento à esquerda */
+    transition: all 0.2s ease;
+}
+
+#theme-toggle:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+
+main {
+    flex-grow: 1; /* Faz o main crescer para ocupar o espaço disponível */
+    max-width: 80rem; /* Largura máxima do conteúdo principal */
+    width: 100%; /* Ocupa 100% da largura disponível */
+    margin: 0 auto; /* Centraliza o conteúdo principal horizontalmente */
+    padding: 2rem 1rem; /* Adiciona espaçamento interno */
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Cria uma grade responsiva */
+    gap: 1.25rem; /* Espaçamento entre os cards */
+}
+
+article {
+    background: var(--bg-light); /* Fundo do card */
+    border-radius: 8px; /* Bordas arredondadas */
+    padding: 1.5rem; /* Espaçamento interno */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Sombra suave */
+    transition: background-color 0.3s ease, border-bottom-color 0.3s ease; /* Transição suave */
+    border-bottom: 1px solid var(--bg-color); /* Borda inferior */
+    padding-bottom: 1.5rem; /* Espaçamento interno inferior */
+}
+
+article:hover {
+    transform: scale(1.01); /* Aumenta ligeiramente o tamanho ao passar o mouse */
+    cursor: pointer; /* Muda o cursor para uma mão */
+}
+
+article h2 {
+    margin-top: 0; /* Remove a margem superior */
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 400; /* Peso da fonte */
+    font-size: 2rem; /* Tamanho da fonte */
+    border-bottom: none; /* Sem borda inferior */
+    padding-bottom: 0; /* Sem espaçamento interno inferior */
+    margin-bottom: 0.25rem; /* Margem inferior */
+    color: var(--primary-color); /* Cor do texto */
+}
+
+article p {
+    margin: 0.5rem 0; /* Margem superior e inferior */
+    line-height: 1.6; /* Altura da linha para melhor legibilidade */
+    font-size: 1.1rem; /* Tamanho da fonte */
+    margin-bottom: 0.5rem; /* Margem inferior */
+    color: var(--secondary-color); /* Cor do texto */
+}
+
+article p strong {
+    color: var(--tertiary-color); /* Cor do texto em negrito */
+    font-weight: 400; /* Peso da fonte */
+}
+
+article a {
+    color: var(--primary-color); /* Cor do link */
+    text-decoration: none; /* Remove o sublinhado padrão */
+    font-weight: 200; /* Peso da fonte */
+}
+
+article a:hover {
+    text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+}
+
+.footer {
+    width: 100%; /* Largura total */
+    color: var(--tertiary-color); /* Cor do texto */
+    background-color: var(--bg-color); /* Cor de fundo */
+    padding: 1rem 0; /* Espaçamento interno */
+    border-top: 1px solid #3c4043; /* Borda superior */
+    font-size: 0.8rem; /* Tamanho da fonte */
+}
+
+.footer-location {
+    color: #9aa0a6; /* Cor do texto */
+    margin-bottom: 10px; /* Margem inferior */
+}
+
+.footer-links {
+    list-style: none; /* Remove os marcadores da lista */
+    display: flex; /* Habilita o layout flexbox */
+    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    gap: 15px; /* Espaçamento entre os links */
+}
+
+.footer-links a {
+    color: var(--secondary-color); /* Cor do link */
+    text-decoration: none; /* Remove o sublinhado */
+    transition: color 0.2s; /* Transição suave para a cor */
+}
+
+.footer-links a:hover {
+    color: var(--accent-color); /* Muda a cor do link ao passar o mouse (variável não definida) */
+}
+
+@media (max-width: 768px) {
+    header { /* Estilos para telas com largura máxima de 768px */
+        flex-direction: column; /* Organiza os itens do cabeçalho em coluna */
+        padding: 1rem; /* Reduz o espaçamento interno */
+        position: static; /* Remove o 'sticky' para um comportamento mais simples em mobile */
+    }
+
+    header h1 { /* Estilos para o h1 no cabeçalho em telas menores */
+        text-align: center; /* Centraliza o texto */
+    }
+
+    .header-top-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+
+
+    main { /* Estilos para o main em telas menores */
+        padding: 0 1rem; /* Adiciona espaçamento lateral */
+    }
+
+    article:hover { /* Estilos para o article em telas menores */
+        transform: none; /* Remove o efeito de escala ao passar o mouse */
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 { /* Estilos para o h1 em telas com largura máxima de 480px */
+        font-size: 2rem; /* Reduz ainda mais o tamanho da fonte */
+        word-wrap: break-word; /* Permite a quebra de palavras longas */
+    }
+
+    #campo-busca, /* Estilos para o input e seu placeholder em telas muito pequenas */
+    input::placeholder {
+        font-size: 1rem; /* Reduz o tamanho da fonte */
+    }
+
+    article h2 { /* Estilos para o h2 do article em telas muito pequenas */
+        font-size: 1.5rem; /* Reduz o tamanho da fonte */
+    }
+
+    .footer { /* Estilos para o rodapé em telas muito pequenas */
+        font-size: 0.7rem;
+    }
+
+    #botao-busca {
+        width: 100%; /* Botão ocupa a largura total */
+    }
+}
+
+/* Estilos para o Modal/Dialog */
+dialog {
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    background-color: var(--bg-color);
+    color: var(--secondary-color);
+    padding: 2rem;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+}
+
+dialog h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-top: 0;
+    text-align: center;
+}
+
+dialog form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+dialog label {
+    font-weight: 500;
+}
+
+dialog input, dialog textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid var(--tertiary-color);
+    background-color: var(--bg-light);
+    color: var(--secondary-color);
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+dialog button {
+    padding: 0.75rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 1px solid var(--primary-color);
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+}
+
+dialog button[type="button"] {
+    background-color: var(--bg-light);
+    color: var(--secondary-color);
+    border-color: var(--tertiary-color);
+}
